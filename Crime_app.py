@@ -667,6 +667,18 @@ class GeminiAPI:
         except Exception as e:
             return f"Connection Error - Unable to process request: {str(e)}"
 
+# Define the modal dialog function
+@st.dialog("Example Modal")
+def show_modal():
+st.write("This is a modal popup!")
+if st.button("Close"):
+st.rerun()
+
+# Trigger the modal
+if st.button("Open Modal"):
+show_modal()
+
+
 class CriminologyProfessionalBot:
     def __init__(self):
         self.gemini_api = GeminiAPI()
