@@ -29,7 +29,7 @@ st.set_page_config(
     menu_items=None
 )
 
-# Enhanced CSS with improved login screen layout and background image support
+# Enhanced CSS with both login image and chatbot styling
 st.markdown("""
 <style>
     /* Black theme with Times New Roman font */
@@ -38,160 +38,6 @@ st.markdown("""
         color: #ffffff !important;
         font-family: 'Times New Roman', Times, serif !important;
         padding-top: 2rem !important;
-    }
-
-    /* Login page specific styling with background image */
-    .login-page {
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.9) 50%, rgba(0, 0, 0, 0.8) 100%) !important;
-        min-height: 100vh !important;
-        position: relative !important;
-        overflow: hidden !important;
-    }
-
-    /* Background image overlay */
-    .login-page::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: var(--login-bg-image);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        opacity: 0.3;
-        z-index: 0;
-    }
-
-    /* Login background overlay with crime scene effect */
-    .login-page::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle at center, rgba(255, 255, 0, 0.05) 0%, rgba(0, 0, 0, 0.7) 70%);
-        z-index: 1;
-    }
-
-    /* Login content wrapper */
-    .login-content {
-        position: relative !important;
-        z-index: 2 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        min-height: 100vh !important;
-        padding: 2rem !important;
-    }
-
-    /* Logo container with enhanced styling */
-    .logo-container {
-        text-align: center !important;
-        margin-bottom: 2rem !important;
-        background: rgba(26, 26, 26, 0.95) !important;
-        padding: 2rem !important;
-        border-radius: 20px !important;
-        border: 3px solid #FFFF00 !important;
-        box-shadow: 0 0 30px rgba(255, 255, 0, 0.3) !important;
-        backdrop-filter: blur(15px) !important;
-        max-width: 500px !important;
-        width: 100% !important;
-        position: relative !important;
-        z-index: 3 !important;
-    }
-
-    /* Logo image styling */
-    .logo-image {
-        max-width: 300px !important;
-        width: 100% !important;
-        height: auto !important;
-        border-radius: 15px !important;
-        border: 2px solid #FFFF00 !important;
-        box-shadow: 0 8px 25px rgba(255, 255, 0, 0.2) !important;
-        margin-bottom: 1rem !important;
-    }
-
-    /* SECURO title styling */
-    .securo-login-title {
-        color: #FFFF00 !important;
-        font-size: 3.5rem !important;
-        font-weight: bold !important;
-        text-align: center !important;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9) !important;
-        margin: 0.5rem 0 !important;
-        letter-spacing: 4px !important;
-        font-family: 'Times New Roman', Times, serif !important;
-    }
-
-    /* Subtitle styling */
-    .login-subtitle {
-        color: #ffffff !important;
-        font-size: 1.3rem !important;
-        text-align: center !important;
-        margin-bottom: 1rem !important;
-        font-weight: 500 !important;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
-    }
-
-    /* Login form container */
-    .login-form-container {
-        background: rgba(26, 26, 26, 0.95) !important;
-        padding: 3rem !important;
-        border-radius: 20px !important;
-        border: 2px solid #FFFF00 !important;
-        max-width: 450px !important;
-        width: 100% !important;
-        box-shadow: 0 15px 35px rgba(255, 255, 0, 0.3) !important;
-        backdrop-filter: blur(15px) !important;
-        margin-top: 2rem !important;
-        position: relative !important;
-        z-index: 3 !important;
-    }
-
-    /* Crime scene tape effect */
-    .crime-tape {
-        background: repeating-linear-gradient(
-            45deg,
-            #FFFF00,
-            #FFFF00 15px,
-            #000000 15px,
-            #000000 30px
-        ) !important;
-        height: 10px !important;
-        margin: 1.5rem 0 !important;
-        border: 1px solid #000000 !important;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
-    }
-
-    /* Security warning */
-    .security-warning {
-        background: rgba(139, 0, 0, 0.9) !important;
-        padding: 20px !important;
-        border-radius: 12px !important;
-        border: 2px solid #FF0000 !important;
-        margin: 20px 0 !important;
-        text-align: center !important;
-        box-shadow: 0 8px 25px rgba(255, 0, 0, 0.2) !important;
-        position: relative !important;
-        z-index: 3 !important;
-    }
-
-    .security-warning h3 {
-        color: #FFFF00 !important;
-        margin: 0 0 10px 0 !important;
-        font-size: 1.5rem !important;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
-    }
-
-    .security-warning p {
-        color: #ffffff !important;
-        margin: 5px 0 !important;
-        font-size: 1rem !important;
     }
 
     /* Chart container styling */
@@ -214,6 +60,19 @@ st.markdown("""
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
     }
 
+    /* Login page styling */
+    .login-page {
+        background-color: #000000 !important;
+        min-height: 100vh !important;
+        position: relative !important;
+    }
+
+    /* Ensure login content appears above overlay */
+    .login-content {
+        position: relative !important;
+        z-index: 2 !important;
+    }
+   
     /* Sidebar styling */
     [data-testid="stSidebar"] {
         background-color: #1a1a1a !important;
@@ -400,12 +259,49 @@ st.markdown("""
         padding-right: 1rem !important;
     }
 
+    /* Enhanced login form styling */
+    .login-container {
+        background-color: rgba(26, 26, 26, 0.95) !important;
+        padding: 2.5rem !important;
+        border-radius: 15px !important;
+        border: 2px solid #FFFF00 !important;
+        max-width: 450px !important;
+        margin: 2rem auto !important;
+        box-shadow: 0 8px 32px rgba(255, 255, 0, 0.3) !important;
+        backdrop-filter: blur(10px) !important;
+    }
+
+    /* SECURO branding */
+    .securo-title {
+        color: #FFFF00 !important;
+        font-size: 3rem !important;
+        font-weight: bold !important;
+        text-align: center !important;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9) !important;
+        margin-bottom: 0.5rem !important;
+        letter-spacing: 3px !important;
+    }
+
     /* Main header styling for login */
     .main-header {
         text-align: center;
         color: #2E86AB;
         font-size: 2.5rem;
         margin-bottom: 2rem;
+    }
+
+    /* Crime scene tape effect */
+    .crime-tape {
+        background: repeating-linear-gradient(
+            45deg,
+            #FFFF00,
+            #FFFF00 10px,
+            #000000 10px,
+            #000000 20px
+        ) !important;
+        height: 8px !important;
+        margin: 1rem 0 !important;
+        border: 2px solid #000000 !important;
     }
 
     /* Crime map container */
@@ -1441,421 +1337,427 @@ I'm your AI criminology specialist - think of me as your experienced detective p
         return m
 
 
+def magnifying_glass_celebration():
+    """Create professional magnifying glass celebration effect"""
+    st.markdown("""
+    <div id="magnify-container">
+        <div class="magnify-celebration magnify-1">🔍</div>
+        <div class="magnify-celebration magnify-2">🔍</div>
+        <div class="magnify-celebration magnify-3">🔍</div>
+        <div class="magnify-celebration magnify-4">🔍</div>
+        <div class="magnify-celebration magnify-5">🔍</div>
+        <div class="magnify-celebration magnify-6">🔍</div>
+        <div class="magnify-celebration magnify-7">🔍</div>
+        <div class="magnify-celebration magnify-8">🔍</div>
+        <div class="magnify-celebration magnify-9">🔍</div>
+        <div class="magnify-celebration magnify-10">🔍</div>
+        <div class="magnify-celebration magnify-11">🔍</div>
+        <div class="magnify-celebration magnify-12">🔍</div>
+        <div class="magnify-celebration magnify-13">🔍</div>
+        <div class="magnify-celebration magnify-14">🔍</div>
+        <div class="magnify-celebration magnify-15">🔍</div>
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('magnify-container').remove();
+        }, 6000);
+    </script>
+    """, unsafe_allow_html=True)
+
+
+def init_session_state():
+    """Initialize session state variables"""
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+    if "professional_bot" not in st.session_state:
+        st.session_state.professional_bot = CriminologyProfessionalBot()
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
+    if "current_user" not in st.session_state:
+        st.session_state.current_user = None
+    if "user_role" not in st.session_state:
+        st.session_state.user_role = None
+    if "access_level" not in st.session_state:
+        st.session_state.access_level = 1
+    if "auth" not in st.session_state:
+        st.session_state.auth = UserAuthentication()
+
 def load_login_image():
-    """Load and display the login image with enhanced fallback and base64 support"""
+    """Load and display the login image with multiple fallback options"""
     try:
-        # First, try to get the image from the uploaded file provided by the user
-        uploaded_file = st.file_uploader("Upload SECURO Logo", type=['png', 'jpg', 'jpeg'], key="logo_upload")
-        if uploaded_file is not None:
-            image = Image.open(uploaded_file)
-            # Convert to base64 and set as CSS background
-            buffered = io.BytesIO()
-            image.save(buffered, format="PNG")
-            img_str = base64.b64encode(buffered.getvalue()).decode()
-            
-            # Set the background image via CSS variable
-            st.markdown(f"""
-            <style>
-                :root {{
-                    --login-bg-image: url(data:image/png;base64,{img_str});
-                }}
-            </style>
-            """, unsafe_allow_html=True)
-            
-            st.markdown('<div class="logo-container">', unsafe_allow_html=True)
-            st.image(image, use_column_width=True, caption="", output_format="auto")
-            st.markdown('</div>', unsafe_allow_html=True)
-            return True
-        
         # Check multiple possible locations for the image
-        image_paths = [
-            "securo.jpeg", 
-            "securo.jpg", 
-            "SECURO.jpeg", 
-            "SECURO.jpg",
-            "images/securo.jpeg", 
-            "images/securo.jpg",
-            "assets/securo.jpeg", 
-            "assets/securo.jpg",
-            "./securo.jpeg", 
-            "./securo.jpg",
-            "static/securo.jpeg",
-            "static/securo.jpg",
-            os.path.join(os.getcwd(), "securo.jpeg"),
-            os.path.join(os.getcwd(), "securo.jpg")
-        ]
-        
+        image_paths = ["securo.jpeg", "images/securo.jpeg", "assets/securo.jpeg", "./securo.jpeg"]
         image_loaded = False
+
         for path in image_paths:
             if os.path.exists(path):
-                try:
-                    image = Image.open(path)
-                    # Convert to base64 and set as CSS background
-                    buffered = io.BytesIO()
-                    image.save(buffered, format="PNG")
-                    img_str = base64.b64encode(buffered.getvalue()).decode()
-                    
-                    # Set the background image via CSS variable
-                    st.markdown(f"""
-                    <style>
-                        :root {{
-                            --login-bg-image: url(data:image/png;base64,{img_str});
-                        }}
-                    </style>
-                    """, unsafe_allow_html=True)
-                    
-                    st.markdown('<div class="logo-container">', unsafe_allow_html=True)
-                    st.image(image, use_column_width=True, caption="", output_format="auto")
-                    st.markdown('</div>', unsafe_allow_html=True)
-                    image_loaded = True
-                    break
-                except Exception as e:
-                    continue
+                image = Image.open(path)
+                # Center the image and make it responsive
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image(image, use_column_width=True)
+                image_loaded = True
+                break
 
         if not image_loaded:
-            # Create a professional placeholder with enhanced styling
+            st.warning("⚠️ Logo image not found. Please ensure 'securo.jpeg' is in the correct directory.")
+            # Display a placeholder with enhanced styling
             st.markdown("""
-            <div class="logo-container">
-                <div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #1a1a1a, #333, #1a1a1a); border-radius: 15px; margin: 20px 0; border: 3px solid #FFFF00;">
-                    <div style="font-size: 4rem; margin-bottom: 20px;">🛡️</div>
-                    <h1 class="securo-login-title">SECURO</h1>
-                    <p class="login-subtitle">Professional Crime Investigation System</p>
-                    <div style="margin-top: 20px; padding: 10px; background: rgba(255, 255, 0, 0.1); border-radius: 8px;">
-                        <small style="color: #FFFF00;">⚠️ Logo image not found. Upload an image above or place 'securo.jpeg' in the project directory.</small>
-                    </div>
-                </div>
+            <div style="text-align: center; padding: 40px; background: linear-gradient(45deg, #1a1a1a, #333); border-radius: 15px; margin: 20px 0;">
+                <h2 style="color: #FFFF00; font-size: 3rem; margin: 0;">🛡️ SECURO</h2>
+                <p style="color: #ffffff; margin: 10px 0;">Professional Crime Investigation System</p>
             </div>
             """, unsafe_allow_html=True)
-            return False
-
-        return True
 
     except Exception as e:
-        # Display fallback logo with error information
-        st.markdown(f"""
-        <div class="logo-container">
-            <div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #1a1a1a, #333, #1a1a1a); border-radius: 15px; margin: 20px 0; border: 3px solid #FFFF00;">
-                <div style="font-size: 4rem; margin-bottom: 20px;">🛡️</div>
-                <h1 class="securo-login-title">SECURO</h1>
-                <p class="login-subtitle">Professional Crime Investigation System</p>
-                <div style="margin-top: 20px; padding: 10px; background: rgba(255, 0, 0, 0.2); border-radius: 8px;">
-                    <small style="color: #FF6B6B;">⚠️ Error loading image: {str(e)[:50]}...</small>
-                </div>
-            </div>
+        st.error(f"Error loading image: {str(e)}")
+        # Display fallback logo
+        st.markdown("""
+        <div style="text-align: center; padding: 40px; background: linear-gradient(45deg, #1a1a1a, #333); border-radius: 15px; margin: 20px 0;">
+            <h2 style="color: #FFFF00; font-size: 3rem; margin: 0;">🛡️ SECURO</h2>
+            <p style="color: #ffffff; margin: 10px 0;">Professional Crime Investigation System</p>
         </div>
         """, unsafe_allow_html=True)
-        return False
 
-
-def show_login_page():
-    """Enhanced professional login page with background image support"""
-    
-    # Apply login page styling
+def show_professional_login():
+    """Display professional login/registration page with enhanced styling and image"""
+   
+    # Add login page class to body
     st.markdown('<div class="login-page">', unsafe_allow_html=True)
     st.markdown('<div class="login-content">', unsafe_allow_html=True)
-    
-    # Load and display the login image/logo
+   
+    # Load and display the image
     load_login_image()
-    
-    # Main title and subtitle
-    st.markdown('<h1 class="securo-login-title">SECURO</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="login-subtitle">Crime Mitigation AI Chat Bot</p>', unsafe_allow_html=True)
-    
-    # Crime scene tape effect
+   
+    # SECURO Title with crime tape
+    st.markdown('<h1 class="main-header">Welcome to Securo AI Chatbot</h1>', unsafe_allow_html=True)
     st.markdown('<div class="crime-tape"></div>', unsafe_allow_html=True)
-    
-    # Login form container
-    st.markdown('<div class="login-form-container">', unsafe_allow_html=True)
-    
-    # Professional security warning
+    st.markdown("<p class='subtitle'>CRIME MITIGATION AI CHAT BOT<br>Professional Access for St. Kitts & Nevis Law Enforcement</p>", unsafe_allow_html=True)
+   
+    # Security notice with enhanced styling
     st.markdown("""
-    <div class="security-warning">
-        <h3>⚠️ AUTHORIZED PERSONNEL ONLY</h3>
-        <p>This system contains sensitive law enforcement information.</p>
-        <p>Unauthorized access is strictly prohibited and monitored.</p>
-        <p>All activities are logged for security purposes.</p>
+    <div style="background: rgba(139, 0, 0, 0.8); padding: 15px; border-radius: 10px; border: 2px solid #FF0000; margin: 20px 0; text-align: center;">
+        <h3 style="color: #FFFF00; margin: 0;">RESTRICTED ACCESS SYSTEM</h3>
+        <p style="color: #ffffff; margin: 5px 0;">Authorized Personnel Only - Law Enforcement & Criminal Justice Professionals</p>
     </div>
     """, unsafe_allow_html=True)
-    
-    # Login form
-    auth = UserAuthentication()
-    
-    # Tab selection for Login/Register
-    tab1, tab2 = st.tabs(["🔐 Professional Login", "📝 Create Account"])
-    
+   
+    # Login container
+    st.markdown('<div class="login-container">', unsafe_allow_html=True)
+   
+    tab1, tab2 = st.tabs(["🔐 Professional Login", "📝 Register Professional Account"])
+   
     with tab1:
-        st.markdown("### Professional Access")
-        
-        # Demo credentials info
-        st.info("""
-        **Demo Credentials Available:**
-        - Username: `demo` / Password: `demo123`
-        - Username: `admin` / Password: `password`
-        """)
-        
-        username = st.text_input("Username", placeholder="Enter your professional username", key="login_username")
-        password = st.text_input("Password", type="password", placeholder="Enter your secure password", key="login_password")
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("🔐 LOGIN", use_container_width=True, type="primary"):
-                if username and password:
-                    success, message = auth.login(username, password)
-                    if success:
-                        st.success(f"✅ {message}")
-                        st.balloons()
-                        time.sleep(1)
-                        st.rerun()
-                    else:
-                        st.error(f"❌ {message}")
+        st.subheader("Access SECURO System")
+       
+        # Add demo credentials info
+        st.info("💡 Demo Credentials: Username: 'admin' | Password: 'password' OR Username: 'demo' | Password: 'demo123'")
+       
+        username = st.text_input("Professional Username", key="login_username", placeholder="Enter your professional username")
+        password = st.text_input("Secure Password", type="password", key="login_password", placeholder="Enter your secure password")
+       
+        if st.button("🚀 ACCESS SECURO SYSTEM", use_container_width=True, type="primary"):
+            if username and password:
+                success, message = st.session_state.auth.login(username, password)
+                if success:
+                    st.success(f"✅ Access Granted: {message}")
+                    magnifying_glass_celebration()
+                    time.sleep(3)
+                    st.rerun()
                 else:
-                    st.warning("⚠️ Please enter both username and password")
-        
-        with col2:
-            if st.button("🚨 Emergency Access", use_container_width=True):
-                st.error("🚨 Emergency protocols activated. Contact system administrator.")
-    
-    with tab2:
-        st.markdown("### Create Professional Account")
-        
-        new_username = st.text_input("Professional Username", placeholder="Create unique username", key="reg_username")
-        new_password = st.text_input("Secure Password", type="password", placeholder="Minimum 8 characters", key="reg_password")
-        confirm_password = st.text_input("Confirm Password", type="password", placeholder="Re-enter password", key="reg_confirm")
-        
-        # Professional details
-        role = st.selectbox("Professional Role", [
-            "Police Officer", "Detective", "Senior Criminologist", 
-            "Forensic Specialist", "Legal Advisor", "Researcher", "Student"
-        ], key="reg_role")
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            badge_number = st.text_input("Badge/ID Number", placeholder="Optional", key="reg_badge")
-        with col2:
-            department = st.text_input("Department", placeholder="Optional", key="reg_dept")
-        
-        if st.button("🆕 CREATE ACCOUNT", use_container_width=True, type="primary"):
-            if new_username and new_password and confirm_password:
-                if new_password == confirm_password:
-                    success, message = auth.create_account(new_username, new_password, role, badge_number, department)
-                    if success:
-                        st.success(f"✅ {message}")
-                        st.info("You can now login with your new credentials.")
-                    else:
-                        st.error(f"❌ {message}")
-                else:
-                    st.error("❌ Passwords do not match")
+                    st.error(f"❌ Access Denied: {message}")
             else:
-                st.warning("⚠️ Please fill in all required fields")
-    
-    # Professional footer
-    st.markdown("""
-    <div style="text-align: center; margin-top: 2rem; padding: 1rem; border-top: 1px solid #333;">
-        <small style="color: #888;">
-            SECURO System v3.0 | Law Enforcement Use Only<br>
-            St. Christopher & Nevis Police Force | Emergency: 911
-        </small>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)  # Close login-form-container
+                st.error("Please enter your professional credentials")
+   
+    with tab2:
+        st.subheader("Register Professional Account")
+        st.warning("Professional verification required for account activation")
+       
+        new_username = st.text_input("Professional Username", key="new_username", placeholder="Choose a professional username")
+        new_password = st.text_input("Secure Password (8+ characters)", type="password", key="new_password", placeholder="Create a strong password")
+        confirm_password = st.text_input("Confirm Password", type="password", key="confirm_password", placeholder="Confirm your password")
+       
+        role = st.selectbox("Professional Role", [
+            "Senior Criminologist",
+            "Detective",
+            "Police Officer",
+            "Forensic Specialist",
+            "Legal Advisor",
+            "Researcher",
+            "Student"
+        ])
+       
+        badge_number = st.text_input("Badge/ID Number (if applicable)", placeholder="Enter badge or ID number")
+        department = st.text_input("Department/Agency", placeholder="Enter your department or agency")
+       
+        if st.button("📋 SUBMIT PROFESSIONAL REGISTRATION", use_container_width=True):
+            if new_username and new_password and confirm_password:
+                if new_password != confirm_password:
+                    st.error("Passwords do not match")
+                else:
+                    success, message = st.session_state.auth.create_account(
+                        new_username, new_password, role, badge_number, department
+                    )
+                    if success:
+                        st.success(f"✅ Registration Successful: {message}")
+                        st.info("Your professional account has been created. You may now login to SECURO.")
+                        magnifying_glass_celebration()
+                    else:
+                        st.error(f"❌ Registration Failed: {message}")
+            else:
+                st.error("Please complete all required fields")
+   
+    st.markdown('</div>', unsafe_allow_html=True)  # Close login-container
     st.markdown('</div>', unsafe_allow_html=True)  # Close login-content
     st.markdown('</div>', unsafe_allow_html=True)  # Close login-page
 
+def display_message(role, content):
+    """Display messages with proper styling"""
+    if role == "user":
+        st.markdown(f'''
+        <div class="user-message">
+            <div class="user-bubble">{content}</div>
+        </div>
+        ''', unsafe_allow_html=True)
+    else:
+        st.markdown(f'''
+        <div class="bot-message">
+            <div class="bot-bubble">{content}</div>
+        </div>
+        ''', unsafe_allow_html=True)
 
 def main():
-    """Main application with enhanced professional interface"""
-    
-    # Initialize session state
-    if "logged_in" not in st.session_state:
-        st.session_state.logged_in = False
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-    if "chat_initialized" not in st.session_state:
-        st.session_state.chat_initialized = False
-    
-    # Show login page if not logged in
+    init_session_state()
+   
+    # Check if user is logged in
     if not st.session_state.logged_in:
-        show_login_page()
+        show_professional_login()
         return
-    
-    # Initialize the professional bot
-    if "bot" not in st.session_state:
-        st.session_state.bot = CriminologyProfessionalBot()
-    
-    # Professional header with user info
-    col1, col2, col3 = st.columns([2, 3, 1])
-    
+   
+    # Professional header with credentials
+    col1, col2, col3 = st.columns([1, 2, 1])
     with col1:
-        st.markdown(f"""
-        <div style="background: #1a1a1a; padding: 10px; border-radius: 8px; border: 1px solid #333;">
-            <strong style="color: #FFFF00;">Officer:</strong> {st.session_state.current_user}<br>
-            <strong style="color: #FFFF00;">Role:</strong> {st.session_state.get('user_role', 'Professional')}<br>
-            <strong style="color: #FFFF00;">Access:</strong> Level {st.session_state.get('access_level', 1)}/5
-        </div>
-        """, unsafe_allow_html=True)
-    
+        st.write(f"**Officer:** {st.session_state.current_user}")
+        st.write(f"**Role:** {st.session_state.user_role}")
+        if st.session_state.get('badge_number'):
+            st.write(f"**Badge:** {st.session_state.badge_number}")
+        st.write(f"**Access Level:** {st.session_state.access_level}/5")
+   
     with col2:
-        st.markdown("""
-        <div style="text-align: center;">
-            <h1 style="color: #FFFF00; margin: 0;">🛡️ SECURO</h1>
-            <p style="color: #ffffff; margin: 0;">Crime Mitigation AI Chat Bot</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
+        st.markdown('<h1 class="securo-title">SECURO</h1>', unsafe_allow_html=True)
+        st.markdown("<p class='subtitle'>CRIME MITIGATION AI CHAT BOT<br>Professional Intelligence System</p>", unsafe_allow_html=True)
+   
     with col3:
-        if st.button("🚪 Logout", use_container_width=True):
-            # Clear session state
-            for key in list(st.session_state.keys()):
-                del st.session_state[key]
+        if st.button("🚪 Secure Logout", type="secondary"):
+            # Clear all session data for security
+            for key in ['logged_in', 'current_user', 'user_role', 'access_level', 'badge_number', 'department']:
+                if key in st.session_state:
+                    del st.session_state[key]
+            st.session_state.messages = []
             st.rerun()
-    
-    # Professional subtitle
-    st.markdown('<p class="subtitle">AI-Powered Criminal Investigation Assistant | St. Kitts & Nevis Police Force</p>', unsafe_allow_html=True)
-    
-    # Initialize chat with professional greeting
-    if not st.session_state.chat_initialized:
-        welcome_message = f"""**Officer {st.session_state.current_user}, SECURO reporting for duty.**
 
-I'm your AI criminology specialist - think of me as your experienced detective partner with 15+ years on the force in St. Kitts & Nevis.
+    bot = st.session_state.professional_bot
 
-**Quick Access Commands:**
-• Crime mapping: "show crime map"  
-• Statistics: "statistics 2024" or "show chart"
-• Trend analysis: "trend analysis" or "compare years"
-• Hotspot analysis: "hotspots" or "crime hotspots"
-• Templates: "incident report" or "case analysis"  
-• Legal help: Ask about any criminal code section  
-
-**Ready to assist with your case work. What's the situation, Officer?**
-        """
-        st.session_state.messages.append({"role": "assistant", "content": welcome_message})
-        st.session_state.chat_initialized = True
-    
-    # Display chat messages with professional styling
-    for message in st.session_state.messages:
-        if message["role"] == "user":
-            st.markdown(f"""
-            <div class="user-message">
-                <div class="user-bubble">{message["content"]}</div>
+    # Sidebar toggle functionality
+    if "sidebar_open" not in st.session_state:
+        st.session_state.sidebar_open = True
+   
+    # Sidebar toggle button in header
+    with col1:
+        if st.button("☰ Menu", key="sidebar_toggle"):
+            st.session_state.sidebar_open = not st.session_state.sidebar_open
+            st.rerun()
+   
+    # Show sidebar only if open
+    if st.session_state.sidebar_open:
+        with st.sidebar:
+            st.header("🔐 Professional Tools")
+           
+            # System status - clean design
+            st.markdown("""
+            <div style="background: #1a4d1a; padding: 10px; border-radius: 8px; margin: 10px 0; text-align: center;">
+                <strong>🟢 SYSTEM ONLINE</strong><br>
+                <small>Officer: """ + st.session_state.user_role + """</small>
             </div>
             """, unsafe_allow_html=True)
-        else:
-            st.markdown(f"""
-            <div class="bot-message">
-                <div class="bot-bubble">{message["content"]}</div>
+           
+            st.divider()
+           
+            # Emergency protocols - cleaner design
+            st.subheader("🚨 Emergency Response")
+           
+            # Emergency buttons with clean design
+            col_a, col_b = st.columns(2)
+           
+            with col_a:
+                if st.button("🚨\nPolice\nDispatch", use_container_width=True, help="Emergency: 911 | HQ: (869) 465-2241"):
+                    st.markdown("""
+                    <div style="background: #8B0000; padding: 15px; border-radius: 8px; color: white; text-align: center; margin: 10px 0;">
+                        <h4>🚨 POLICE DISPATCH</h4>
+                        <p><strong>Emergency:</strong> <a href="tel:911" style="color: #FFFF00;">911</a></p>
+                        <p><strong>HQ Direct:</strong> <a href="tel:+18694652241" style="color: #FFFF00;">(869) 465-2241</a></p>
+                    </div>
+                    """, unsafe_allow_html=True)
+           
+            with col_b:
+                if st.button("🏥\nMedical\nEmergency", use_container_width=True, help="Emergency: 911 | Hospital: (869) 465-2551"):
+                    st.markdown("""
+                    <div style="background: #8B0000; padding: 15px; border-radius: 8px; color: white; text-align: center; margin: 10px 0;">
+                        <h4>🏥 MEDICAL EMERGENCY</h4>
+                        <p><strong>Emergency:</strong> <a href="tel:911" style="color: #FFFF00;">911</a></p>
+                        <p><strong>Hospital:</strong> <a href="tel:+18694652551" style="color: #FFFF00;">(869) 465-2551</a></p>
+                    </div>
+                    """, unsafe_allow_html=True)
+           
+            # Legal emergency
+            if st.button("⚖️ Legal/Court Emergency", use_container_width=True):
+                st.markdown("""
+                <div style="background: #8B0000; padding: 15px; border-radius: 8px; color: white; text-align: center; margin: 10px 0;">
+                    <h4>⚖️ LEGAL EMERGENCY</h4>
+                    <p><strong>DPP Office:</strong> <a href="tel:+18694671000" style="color: #FFFF00;">(869) 467-1000</a></p>
+                    <p><strong>Court Registry:</strong> <a href="tel:+18694652366" style="color: #FFFF00;">(869) 465-2366</a></p>
+                </div>
+                """, unsafe_allow_html=True)
+           
+            st.divider()
+           
+            # Professional resources
+            st.subheader("📋 Case Management")
+           
+            if st.button("📋 Incident Report", use_container_width=True):
+                template = bot.get_case_template('incident_report')
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": f"**INCIDENT REPORT TEMPLATE GENERATED**\n\n{template}"
+                })
+                st.rerun()
+           
+            if st.button("🔍 Case Analysis", use_container_width=True):
+                template = bot.get_case_template('case_analysis')
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": f"**CASE ANALYSIS FRAMEWORK GENERATED**\n\n{template}"
+                })
+                st.rerun()
+           
+            if st.button("⚖️ Legal Reference", use_container_width=True):
+                legal_ref = bot.get_legal_reference("general")
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": legal_ref
+                })
+                st.rerun()
+           
+            st.divider()
+           
+            # Enhanced Chart Options
+            st.subheader("📊 Crime Analytics")
+           
+            chart_col1, chart_col2 = st.columns(2)
+           
+            with chart_col1:
+                if st.button("📈 Pie Chart", use_container_width=True, help="Show crime distribution as pie chart"):
+                    st.session_state.messages.append({
+                        "role": "user",
+                        "content": "show pie chart 2024"
+                    })
+                    st.rerun()
+               
+                if st.button("🔄 Trend Analysis", use_container_width=True, help="Show multi-year trends"):
+                    st.session_state.messages.append({
+                        "role": "user",
+                        "content": "show trend analysis"
+                    })
+                    st.rerun()
+           
+            with chart_col2:
+                if st.button("📊 Bar Chart", use_container_width=True, help="Show crime statistics as bar chart"):
+                    st.session_state.messages.append({
+                        "role": "user",
+                        "content": "show bar chart 2024"
+                    })
+                    st.rerun()
+               
+                if st.button("🎯 Hotspots", use_container_width=True, help="Show crime hotspot analysis"):
+                    st.session_state.messages.append({
+                        "role": "user",
+                        "content": "show hotspot analysis"
+                    })
+                    st.rerun()
+           
+            st.divider()
+           
+            # Professional directory
+            st.subheader("📞 Contacts")
+           
+            if st.button("📞 Directory", use_container_width=True):
+                directory = bot.get_professional_directory()
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": directory
+                })
+                st.rerun()
+           
+            st.divider()
+           
+            # System utilities
+            st.subheader("🔧 System")
+           
+            if st.button("🗑️ Clear Chat", use_container_width=True):
+                st.session_state.messages = []
+                st.success("Chat cleared.")
+                st.rerun()
+           
+            # Clean system information
+            st.divider()
+            st.markdown("""
+            <div style="background: #333; padding: 8px; border-radius: 5px; font-size: 12px; text-align: center;">
+                <strong>SECURO v2.1</strong><br>
+                St. Kitts & Nevis<br>
+                """ + datetime.datetime.now().strftime('%Y-%m-%d %H:%M') + """
             </div>
             """, unsafe_allow_html=True)
-    
-    # Chat input
-    if prompt := st.chat_input("Enter your professional inquiry..."):
+
+    # Display chat messages
+    chat_container = st.container()
+    with chat_container:
+        # Display all messages without automatic welcome
+        for message in st.session_state.messages:
+            display_message(message["role"], message["content"])
+
+    # Professional chat input
+    if prompt := st.chat_input("Enter case details, legal query, or request professional assistance..."):
         # Add user message
         st.session_state.messages.append({"role": "user", "content": prompt})
-        
-        # Display user message immediately
-        st.markdown(f"""
-        <div class="user-message">
-            <div class="user-bubble">{prompt}</div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Generate professional response
-        with st.spinner("🔍 SECURO analyzing..."):
-            response = st.session_state.bot.process_professional_query(prompt)
-            
-            # Handle special responses
-            if response == "crime_map_requested":
+       
+        # Get professional response
+        with st.spinner("Processing professional inquiry..."):
+            response = bot.process_professional_query(prompt)
+       
+        # Handle special responses
+        if response == "crime_map_requested":
+            # Display crime map in main area
+            with st.container():
+                st.markdown("---")
+                st.markdown('<div class="crime-map-container">', unsafe_allow_html=True)
+                st.subheader("🗺️ St. Kitts & Nevis Crime Hotspot Map")
+                st.markdown("*Interactive crime intelligence map showing current hotspots and police stations*")
+               
                 try:
-                    crime_map = st.session_state.bot.create_professional_crime_map()
-                    st.markdown('<div class="crime-map-container">', unsafe_allow_html=True)
-                    st.markdown('<h3 style="color: #FFFF00; text-align: center;">🗺️ LIVE CRIME MAPPING SYSTEM</h3>', unsafe_allow_html=True)
-                    folium_static(crime_map, width=700, height=400)
-                    st.markdown('</div>', unsafe_allow_html=True)
-                    
-                    response = """**CRIME MAPPING SYSTEM ACTIVATED**
-
-**Map Features:**
-• **Satellite/Street View:** Toggle between different map layers
-• **Police Stations:** Blue markers show HQ and stations
-• **Crime Hotspots:** Color-coded risk levels (Red=High, Orange=Medium, Green=Low)
-• **Incident Data:** Click markers for detailed breakdowns
-
-**Risk Assessment:**
-• Basseterre Central: HIGH RISK (450+ incidents)
-• Charlestown: MEDIUM RISK (200 incidents)  
-• Frigate Bay: MEDIUM RISK (180 incidents)
-• Sandy Point: MEDIUM RISK (120 incidents)
-• Dieppe Bay: LOW RISK (90 incidents)
-
-**Officer, use this intelligence for patrol planning and resource allocation.**
-                    """
+                    crime_map = bot.create_professional_crime_map()
+                    folium_static(crime_map, width=800, height=400)
+                   
+                    response = "**CRIME HOTSPOT MAP DISPLAYED ABOVE**\n\nThe tactical intelligence map shows:\n• Current crime hotspots with risk assessment\n• Police station locations and coverage areas\n• Crime incident data by geographic area\n• Multiple view layers for operational planning\n\n**Officer, use map controls to zoom and switch views for tactical analysis.**"
+                   
                 except Exception as e:
-                    response = f"**MAP SYSTEM ERROR:** Unable to load crime mapping. Technical issue: {str(e)}"
-            
-            # Add assistant response
-            st.session_state.messages.append({"role": "assistant", "content": response})
-            
-            # Display assistant response
-            st.markdown(f"""
-            <div class="bot-message">
-                <div class="bot-bubble">{response}</div>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        # Auto-scroll to bottom
+                    response = f"**MAP ERROR**: Unable to display crime map. Error: {str(e)}\n\nPlease try again or contact system administrator."
+               
+                st.markdown('</div>', unsafe_allow_html=True)
+                st.markdown("---")
+       
+        # Add bot response
+        st.session_state.messages.append({"role": "assistant", "content": response})
         st.rerun()
-    
-    # Professional sidebar with quick actions
-    with st.sidebar:
-        st.markdown("""
-        <div style="text-align: center; margin-bottom: 20px;">
-            <h3 style="color: #FFFF00;">🚔 QUICK ACTIONS</h3>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        if st.button("📊 Crime Statistics", use_container_width=True):
-            st.session_state.messages.append({"role": "user", "content": "show statistics 2024"})
-            st.rerun()
-        
-        if st.button("🗺️ Crime Map", use_container_width=True):
-            st.session_state.messages.append({"role": "user", "content": "show crime map"})
-            st.rerun()
-        
-        if st.button("📈 Trend Analysis", use_container_width=True):
-            st.session_state.messages.append({"role": "user", "content": "trend analysis"})
-            st.rerun()
-        
-        if st.button("📋 Incident Report", use_container_width=True):
-            st.session_state.messages.append({"role": "user", "content": "incident report template"})
-            st.rerun()
-        
-        if st.button("⚖️ Legal Reference", use_container_width=True):
-            st.session_state.messages.append({"role": "user", "content": "legal reference guide"})
-            st.rerun()
-        
-        st.markdown("---")
-        
-        # Emergency contacts
-        st.markdown("""
-        <div style="background: #8B0000; padding: 10px; border-radius: 8px; margin: 10px 0;">
-            <h4 style="color: #FFFF00; margin: 0;">🚨 EMERGENCY</h4>
-            <p style="color: white; margin: 5px 0; font-size: 14px;">Police Emergency: <strong>911</strong></p>
-            <p style="color: white; margin: 5px 0; font-size: 14px;">Police HQ: <strong>(869) 465-2241</strong></p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # System info
-        st.markdown(f"""
-        <div style="background: #1a1a1a; padding: 10px; border-radius: 8px; margin-top: 20px; border: 1px solid #333;">
-            <small style="color: #888;">
-                <strong>System Status:</strong> ✅ Online<br>
-                <strong>Session:</strong> {datetime.datetime.now().strftime("%H:%M")}<br>
-                <strong>Version:</strong> SECURO v3.0<br>
-                <strong>Jurisdiction:</strong> St. Kitts & Nevis
-            </small>
-        </div>
-        """, unsafe_allow_html=True)
-
 
 if __name__ == "__main__":
     main()
